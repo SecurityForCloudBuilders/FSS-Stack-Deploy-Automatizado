@@ -12,7 +12,7 @@ Conseguir automaticamente dar o deploy da Stack All-in-One do File Storage Secur
 
 <li> No fss-stack-deploy.sh mude as variáveis para de acordo com o seu ambiente. </li>
 <li> Execute o arquivo. </li>
-<li> Caso queira pode conferir nas consoles da AWS - CloudFormation e Cloud One File Storage Security os recursos sendo criados. </li>
+<li> Caso queira, pode conferir nas consoles da AWS - CloudFormation e Cloud One File Storage Security os recursos sendo criados. </li>
 
 </ul>
 
