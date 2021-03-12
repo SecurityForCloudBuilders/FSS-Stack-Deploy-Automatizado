@@ -7,9 +7,7 @@ on:
   # Triggers the workflow on push or pull request events but only for the main branch
   push:
     branches: [ main ]
-  #pull_request:
-    #branches: [ main ]
-
+    
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
@@ -41,15 +39,3 @@ jobs:
           region: ${{ secrets.region }}
           s3bucket_to_scan: ${{ secrets.s3bucket_to_scan }}
           c1_api_key: ${{ secrets.c1_api_key }}
-
-      # - name: Where i am
-      #   run: pwd
-      
-      # - name: List directory
-      #   run: ls -lha
-
-      # Runs a set of commands using the runners shell
-      #- name: Run a multi-line script
-      #  run: |
-      #    echo Add other actions to build,
-      #    echo test, and deploy your project.
