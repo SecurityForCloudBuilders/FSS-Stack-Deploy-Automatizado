@@ -7,8 +7,8 @@
 # You will also need to install jq (https://github.com/stedolan/jq) and curl
 
 # Mude essas variáveis de acordo com o que faz sentido para o seu ambiente, tanto da AWS como também do Cloud One File Storage Security:
-AWS_ACCESS_KEY_ID=$aws_access_key_id
-AWS_SECRET_ACCESS_KEY=$aws_secret_access_id
+# AWS_ACCESS_KEY_ID=$aws_access_key_id
+# AWS_SECRET_ACCESS_KEY=$aws_secret_access_id
 external_id=$externalid
 allinone_stack_name=$allinone_stackname
 region=$region
