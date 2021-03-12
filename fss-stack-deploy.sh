@@ -7,14 +7,24 @@
 # You will also need to install jq (https://github.com/stedolan/jq) and curl
 
 # Mude essas variáveis de acordo com o que faz sentido para o seu ambiente, tanto da AWS como também do Cloud One File Storage Security:
-
-external_id="external-id-obtained"
-allinone_stack_name="deploy-all-in-one-stackfss" 
-region="region-you-want-to-install-the-stack"
-s3_bucket_to_scan="the-name-of-your-bucket-to-scan" 
+AWS_ACCESS_KEY_ID=${{ secrets.aws_access_key_id }}
+AWS_SECRET_ACCESS_KEY=${{ secrets.aws_secret_access_id }}
+external_id=${{ secrets.externalid }}
+allinone_stack_name=${{ secrets.allinone_stackname }} 
+region=${{ secrets.region }}
+s3_bucket_to_scan=${{ secrets.s3bucket_to_scan }}
 kms_master_key_arn="" # "your-KMS-master-key-which-is-used-to-encrypt-objects-in-your-s3-bucket-to-scan" # Leave it blank if you haven't enabled SSE-KMS on your bucket.
 kms_master_key_arn_for_sqs="" # "your-KMS-master-key-which-is-used-to-encrypt-SQS-massages-in your-scanner-stack" # Leave it blank if you haven't enabled SSE-KMS on your bucket.
-api_secret_key="Your Cloud One API"
+api_secret_key=${{ secrets.c1_api_key }}
+
+# Mude essas variáveis de acordo com o que faz sentido para o seu ambiente, tanto da AWS como também do Cloud One File Storage Security. Caso queira executar na sua máquina:
+# external_id="external-id-obtained"
+# allinone_stack_name="deploy-all-in-one-stackfss" 
+# region="region-you-want-to-install-the-stack"
+# s3_bucket_to_scan="the-name-of-your-bucket-to-scan" 
+# kms_master_key_arn="" # "your-KMS-master-key-which-is-used-to-encrypt-objects-in-your-s3-bucket-to-scan" # Leave it blank if you haven't enabled SSE-KMS on your bucket.
+# kms_master_key_arn_for_sqs="" # "your-KMS-master-key-which-is-used-to-encrypt-SQS-massages-in your-scanner-stack" # Leave it blank if you haven't enabled SSE-KMS on your bucket.
+# api_secret_key="Your Cloud One API"
 
 
 # Deploy the Cloud One - File Storage Security All-in-One Stack:

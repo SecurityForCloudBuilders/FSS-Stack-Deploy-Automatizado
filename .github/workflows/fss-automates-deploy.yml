@@ -27,13 +27,13 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run The fss-stack-deploy.sh script and Deploy the stack to your AWS Account
-        run: ~/FSS-Stack-Deploy-Automatizado/FSS-Stack-Deploy-Automatizado/fss-stack-deploy.sh
+        run: ./fss-stack-deploy.sh
 
-      - name: Where i am
-        run: pwd
+      # - name: Where i am
+      #   run: pwd
       
-      - name: List directory
-        run: ls -lha
+      # - name: List directory
+      #   run: ls -lha
 
       # Runs a set of commands using the runners shell
       #- name: Run a multi-line script
