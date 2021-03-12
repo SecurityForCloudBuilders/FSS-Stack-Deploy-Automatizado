@@ -32,7 +32,7 @@ jobs:
 
       # Runs a single command using the runners shell
       - name: Run The fss-stack-deploy.sh script and Deploy the stack to your AWS Account
-        run: sh ./fss-stack-deploy.sh
+        run: ./fss-stack-deploy.sh
         env:
           externalid: ${{ secrets.externalid }}
           allinone_stackname: ${{ secrets.allinone_stackname }}
