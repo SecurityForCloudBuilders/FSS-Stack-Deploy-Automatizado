@@ -2,35 +2,12 @@
 Conseguir <a href="https://cloudone.trendmicro.com/docs/file-storage-security/api-create-stack/"> automaticamente </a> dar o deploy da Stack All-in-One do File Storage Security em uma conta da AWS!
 
 <hr />
-<br />
 
-## Para usar:
-
-<br />
-
-### Para usar na sua máquina:
+## Para usar no Github Actions:
 
 <br />
 
-<b> De um git clone ou baixe o zip para a sua máquina: </b>
-
-<ul>
-
-<li> No <strong> fss-stack-deploy.sh </strong> mude as variáveis para de acordo com o seu ambiente. </li>
-<li> Execute o arquivo. </li>
-<li> Caso queira, pode conferir nas consoles da AWS - CloudFormation e Cloud One File Storage Security os recursos sendo criados. </li>
-
-</ul>
-
-<br />
-<hr />
-<br />
-
-### Para usar no Github Actions:
-
-<br />
-
-<b> De um fork no repositório. </b>
+<b> De um fork nesse repositório. </b>
 
 <b> No <a href="https://docs.github.com/pt/actions/reference/encrypted-secrets"> secrets </a> do seu repositório, crie as seguintes variáveis: </b>
 
@@ -53,10 +30,31 @@ Conseguir <a href="https://cloudone.trendmicro.com/docs/file-storage-security/ap
 
 </ul>
 
-### OBS:
+### IMPORTANTE:
 
-Também é necessário manualmente abrir o arquivo <b> fss-automates-deploy.yml </b> e nesse arquivo ir para o <b> Step com nome: AWS Credentials. </b> E lá, mudar na variável <b> aws-region </b> para a sua região.  
+Também é necessário manualmente abrir o arquivo <b> fss-automated-deploy.yml </b> e nesse arquivo ir para o <b> Step com nome: AWS Credentials. </b> E lá, mudar na variável <b> aws-region </b> para a sua região.  
 
+<b> E finalmente, faça o push para main do seu Repositório! </b>
+
+<br />
+<hr />
+<br />
+
+## Caso não quiera usar o Github Action:
+
+<br />
+
+<b> De um git clone ou baixe o zip para a sua máquina: </b>
+
+<ul>
+
+<li> No <strong> fss-stack-deploy.sh </strong> mude as variáveis para de acordo com o seu ambiente. </li>
+<li> Execute o arquivo. </li>
+<li> Caso queira, pode conferir nas consoles da AWS - CloudFormation e Cloud One File Storage Security os recursos sendo criados. </li>
+
+</ul>
+
+<br />
 <hr />
 <br />
 
@@ -67,8 +65,6 @@ Também é necessário manualmente abrir o arquivo <b> fss-automates-deploy.yml 
 <b> Para saber mais como testar o Cloud One File Storage Security: 
 <a href="https://github.com/SecurityForCloudBuilders/SegurancaParaNuvem/tree/main/SegurancaParaCloudESecOps/SeguracaParaFileStorage"> SeguracaParaFileStorage. </a> 
 
-Ou os outros módulos para ajudar na sua jornada de construção de Segurança na Cloud: <a href="https://github.com/SecurityForCloudBuilders/SegurancaParaNuvem"> SegurancaParaNuvem. </a></b>
+Ou outras ferramentas para ajudar na sua jornada de construção de Segurança na Cloud: <a href="https://github.com/SecurityForCloudBuilders/SegurancaParaNuvem"> SegurancaParaNuvem. </a></b>
 
 <br />
-
-<i> <strong> Sinta-se livre para também contribuir! </i> </strong>

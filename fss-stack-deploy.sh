@@ -15,7 +15,10 @@ kms_master_key_arn=$kmsmaster_key_arn
 kms_master_key_arn_for_sqs=$kmsmaster_key_arn_for_sqs
 api_secret_key=$c1_api_key
 
-# Mude essas variáveis de acordo com o que faz sentido para o seu ambiente, tanto da AWS como também do Cloud One File Storage Security. Caso queira executar na sua máquina:
+# --! Mude essas variáveis de acordo com o que faz sentido para o seu ambiente, tanto da AWS como também do Cloud One File Storage Security. 
+# --! Caso queira executar no seu computador, comente ou exclua o bloco de variáveis acima, 
+# --! E descomente o bloco de variáveis abaixo:
+
 # external_id="external-id-obtained"
 # allinone_stack_name="deploy-all-in-one-stackfss" 
 # region="region-you-want-to-install-the-stack"
@@ -106,15 +109,6 @@ do
 
     fi
 
-    # 
-    ## TODO if (demorou mais de 15min) 
-    #
-    ##     then
-    #
-    ##     exit
-    #
-    ## fi
-    # 
 done
 
 # Obtain the ARNs of the scanner and storage stacks:
