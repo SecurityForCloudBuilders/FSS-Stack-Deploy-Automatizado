@@ -30,7 +30,7 @@ api_secret_key=$c1_api_key
 
 # Deploy the Cloud One - File Storage Security All-in-One Stack:
 
-    # Para criar os recursos na AWS via esse Template, demorou 5 minutos e 32 segundos.
+    # --! O retorno ao criar a Stack, irá imprimir na tela o ARN dessa Stack !--
 
 aws cloudformation create-stack --stack-name ${allinone_stack_name} --region ${region} --template-url https://file-storage-security.s3.amazonaws.com/latest/templates/FSS-All-In-One.template --parameters ParameterKey=S3BucketToScan,ParameterValue=${s3_bucket_to_scan} ParameterKey=KMSKeyARNForBucketSSE,ParameterValue=${kms_master_key_arn} ParameterKey=KMSKeyARNForQueueSSE,ParameterValue=${kms_master_key_arn_for_sqs} ParameterKey=ExternalID,ParameterValue=${external_id} --capabilities CAPABILITY_NAMED_IAM
 
