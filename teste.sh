@@ -6,7 +6,7 @@
 # sudo ./aws/install
 # You will also need to install jq (https://github.com/stedolan/jq) and curl
 
-external_id=${{ secrets.externalid }} #"external-id-obtained"
+external_id=$id #"external-id-obtained"
 
 
 echo $external_id
