@@ -26,6 +26,9 @@ jobs:
       - uses: actions/checkout@v2
 
       # Runs a single command using the runners shell
+      - name: Execute the script
+        run: chmod+ fss-stack-deploy.sh
+
       - name: Run The fss-stack-deploy.sh script and Deploy the stack to your AWS Account
         run: ./fss-stack-deploy.sh
 
