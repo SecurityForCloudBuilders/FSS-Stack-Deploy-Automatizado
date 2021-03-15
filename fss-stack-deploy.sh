@@ -40,8 +40,6 @@ echo "==========---------------================-----------==========------------
 
         # When the stack is ready, the status will become CREATE_COMPLETE.
 
-# stack_status=$(aws cloudformation describe-stacks --stack-name ${allinone_stack_name} --output json --query 'Stacks[0].StackStatus')
-
 stack_status=$(aws cloudformation describe-stacks --stack-name ${allinone_stack_name} --output json | jq -r '.Stacks[0].StackStatus')
 
 # Before entering the loop, sleep for 10 seconds
