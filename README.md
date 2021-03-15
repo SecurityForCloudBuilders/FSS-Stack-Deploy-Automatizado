@@ -25,6 +25,10 @@ Conseguir <a href="https://cloudone.trendmicro.com/docs/file-storage-security/ap
     <ul> <li> A sua Master Key do KMS na qual é usado para encriptar objetos no seu bucket-to-scan do S3. Deixe em branco se você não habilitou o SSE-KMS no seu bucket. </li> </ul>
 <li> kmsmaster_key_arn_for_sqs </li>
     <ul> <li>  A sua chave mestra do KMS na qual é usado para encriptar as mensagens no SQS no seu scanner-stack. Deixe em branco se você não habilitou o SSE-KMS.  </li> </ul>
+<li> AWS_ACCESS_KEY_ID </li>
+    <ul> <li> A Access Key ID do seu usuário que pertence a sua conta da AWS  </ul> </li>
+<li> AWS_SECRET_ACCESS_KEY</li> 
+    <ul> <li> O Secret Access Key do seu usuário que pertence a sua conta da AWS </ul> </li>
 <li> c1_api_key </li>
     <ul> <li> A sua API do Cloud One </li> </ul>
 
