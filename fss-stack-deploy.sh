@@ -42,7 +42,7 @@ echo "==========---------------================-----------==========------------
 
 # stack_status=$(aws cloudformation describe-stacks --stack-name ${allinone_stack_name} --output json --query 'Stacks[0].StackStatus')
 
-stack_status=$(aws cloudformation describe-stacks --stack-name "deploy-all-in-one-stackfss" --output json | jq -r '.Stacks[0].StackStatus')
+stack_status=$(aws cloudformation describe-stacks --stack-name ${allinone_stack_name} --output json | jq -r '.Stacks[0].StackStatus')
 
 # Before entering the loop, sleep for 10 seconds
 sleep 10
@@ -56,7 +56,7 @@ while [[ "$stack_status" == "CREATE_IN_PROGRESS" ]]
 
 do
 
-    stack_status=$(aws cloudformation describe-stacks --stack-name "deploy-all-in-one-stackfss" --output json | jq -r '.Stacks[0].StackStatus')
+    stack_status=$(aws cloudformation describe-stacks --stack-name ${allinone_stack_name} --output json | jq -r '.Stacks[0].StackStatus')
 
     echo "==========---------------================-----------==========----------------=========================="
 
