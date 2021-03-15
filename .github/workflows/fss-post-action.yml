@@ -28,11 +28,9 @@ jobs:
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
           aws-region: us-east-1
 
-      - name: Moving to the Post-Actions Directory
-        run: cd ./Post-Actions
-
       # Runs a single command using the runners shell
       - name: Run The fss-post-actions.sh script and Deploy the File Storage Security Post Action Capability
+        working-directory: ./Post-Actions
         run: ./fss-post-actions.sh
         env:
           allinone_stackname: ${{ secrets.allinone_stackname }}
