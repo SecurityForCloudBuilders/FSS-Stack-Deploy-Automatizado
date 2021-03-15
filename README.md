@@ -34,11 +34,34 @@ Conseguir <a href="https://cloudone.trendmicro.com/docs/file-storage-security/ap
 
 </ul>
 
+<br />
+
+### Post-Actions Workflow
+
+Caso quiera utilizar o <b> "Post-Action-Automated-Deploy" </b>, crie as seguintes variáveis no Secret do seu Repositório:
+
+<ul> 
+
+<li> allinone_stackname </li>
+    <ul> <li> O nome do Deploy da sua All In One Stack do FSS. </li> </ul>
+<li> promote_bucket </li>
+    <ul> <li> Será o bucket que receberá os arquivos considerados pelo FSS como limpos. * O Bucket já precisa existir na conta * </li> </ul> 
+<li> quarantine_bucket </li>
+    <ul> <li> Será o bucket que receberá os arquivos que o FSS julga que devem ser quarentenados. * O Bucket já precisa existir na conta * </li> </ul> 
+<li> function_name </li>
+    <ul> <li> Nome da Lambda function que será criada. </li> </ul> 
+
+</ul>
+
+<br />
+
 ### IMPORTANTE:
 
-Também é necessário manualmente abrir o arquivo <b> fss-automated-deploy.yml </b> e nesse arquivo ir para o <b> Step com nome: AWS Credentials. </b> E lá, mudar na variável <b> aws-region </b> para a sua região.  
+Também é necessário manualmente abrir o arquivo <b> fss-automated-deploy.yml </b> e/ ou <b> fss-post-action.yml </b> (caso queira utilizar o "Post-Action-Automated-Deploy" Workflow) e nesse arquivo ir para o <b> Step com nome: AWS Credentials. </b> E lá, mudar na variável <b> aws-region </b> para a sua região.  
 
-<b> E finalmente, faça o push para main do seu Repositório! </b>
+<b> E finalmente, vá até a parte de Actions no Seu Repositório. Embaixo de "All Workflows" procure e clique em "FSS-Automated-Deploy". Por último, clique em "Run workflow". 
+
+Pronto, o Workflow, irá começar automaticamente!</b>
 
 <br />
 <hr />
@@ -52,7 +75,7 @@ Também é necessário manualmente abrir o arquivo <b> fss-automated-deploy.yml 
 
 <ul>
 
-<li> No <strong> fss-stack-deploy.sh </strong> mude as variáveis para de acordo com o seu ambiente. </li>
+<li> No <strong> fss-stack-deploy.sh </strong> e/ ou <strong> fss-post-actions.sh </strong> mude as variáveis para de acordo com o seu ambiente. </li>
 <li> Execute o arquivo. </li>
 <li> Caso queira, pode conferir nas consoles da AWS - CloudFormation e Cloud One File Storage Security os recursos sendo criados. </li>
 
