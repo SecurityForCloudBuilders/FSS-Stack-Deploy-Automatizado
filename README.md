@@ -13,14 +13,12 @@ Conseguir <a href="https://cloudone.trendmicro.com/docs/file-storage-security/ap
 
 <ul>  
 
-<li> externalid </li>
-    <ul> <li> External ID Obtido. Para pegar o ExternalID, precisa fazer uma chamada para a <a href="https://cloudone.trendmicro.com/docs/file-storage-security/api-reference/#operation/describeExternalID"> API do FSS.</a>  </li> </ul>
 <li> allinone_stackname </li>
     <ul> <li> O nome do Deploy da sua All In One Stack do FSS </li> </ul>
 <li> region </li>
     <ul> <li> Região que você quer instalar a Stack </li> </ul>
 <li> s3bucket_to_scan </li>
-    <ul> <li> O Nome do Seu Bucket-to-scan <strong> *Esse bucket já precisa existir* </strong> </li> </ul>
+    <ul> <li> O Nome do Seu Bucket-to-scan <strong> <b> *Se um bucket com esse nome não existir, ele irá ser criado. * </b> </strong> </li> </ul>
 <li> kmsmaster_key_arn </li>
     <ul> <li> A sua Master Key do KMS na qual é usado para encriptar objetos no seu bucket-to-scan do S3. Deixe em branco se você não habilitou o SSE-KMS no seu bucket. </li> </ul>
 <li> kmsmaster_key_arn_for_sqs </li>
@@ -45,9 +43,9 @@ Caso quiera utilizar o <b> "Post-Action-Automated-Deploy" </b>, crie as seguinte
 <li> allinone_stackname </li>
     <ul> <li> O nome do Deploy da sua All In One Stack do FSS. </li> </ul>
 <li> promote_bucket </li>
-    <ul> <li> Será o bucket que receberá os arquivos considerados pelo FSS como limpos. * O Bucket já precisa existir na conta * </li> </ul> 
+    <ul> <li> Será o bucket que receberá os arquivos considerados pelo FSS como limpos. <b> *Se um bucket com esse nome não existir, ele irá ser criado. * </b> </li> </ul> 
 <li> quarantine_bucket </li>
-    <ul> <li> Será o bucket que receberá os arquivos que o FSS julga que devem ser quarentenados. * O Bucket já precisa existir na conta * </li> </ul> 
+    <ul> <li> Será o bucket que receberá os arquivos que o FSS julga que devem ser quarentenados. <b> *Se um bucket com esse nome não existir, ele irá ser criado. * </b> </li> </ul> 
 <li> function_name </li>
     <ul> <li> Nome da Lambda function que será criada. </li> </ul> 
 

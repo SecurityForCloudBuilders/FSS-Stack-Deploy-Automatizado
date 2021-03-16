@@ -13,6 +13,12 @@ function_name=$function_name
 # function_name="your-function_name"
 
 
+# Creating the Promote Bucket
+aws s3api create-bucket --bucket $promote_bucket --region us-east-1
+
+# Creating the Quarantine Bucket
+aws s3api create-bucket --bucket $quarantine_bucket --region us-east-1
+
 fss_lambda_policy_arn=$(aws iam create-policy --policy-name FSS_Lambda_Policy --policy-document file://fss-trust-policy.json | jq -r .'Policy.Arn')
 
 # echo $fss_lambda_policy_arn

@@ -7,7 +7,6 @@
 # You will also need to install jq (https://github.com/stedolan/jq) and curl
 
 # Mude essas variáveis de acordo com o que faz sentido para o seu ambiente, tanto da AWS como também do Cloud One File Storage Security:
-external_id=$externalid
 allinone_stack_name=$allinone_stackname
 region=$region
 s3_bucket_to_scan=$s3bucket_to_scan
@@ -19,7 +18,6 @@ api_secret_key=$c1_api_key
 # --! Caso queira executar no seu computador, comente ou exclua o bloco de variáveis acima, 
 # --! E descomente o bloco de variáveis abaixo:
 
-# external_id="external-id-obtained"
 # allinone_stack_name="deploy-all-in-one-stackfss" 
 # region="region-you-want-to-install-the-stack"
 # s3_bucket_to_scan="the-name-of-your-bucket-to-scan" 
@@ -27,6 +25,12 @@ api_secret_key=$c1_api_key
 # kms_master_key_arn_for_sqs="" # "your-KMS-master-key-which-is-used-to-encrypt-SQS-massages-in your-scanner-stack" # Leave it blank if you haven't enabled SSE-KMS on your bucket.
 # api_secret_key="Your Cloud One API"
 
+
+# Creating a bucket
+aws s3api create-bucket --bucket $s3_bucket_to_scan --region us-east-1
+
+# Getting the FSS External ID
+external_id=$(curl --location --request GET 'https://cloudone.trendmicro.com/api/filestorage/external-id' --header 'api-secret-key: '${api_secret_key}'' --header 'Api-Version: v1' | jq -r '.externalID')
 
 # Deploy the Cloud One - File Storage Security All-in-One Stack:
 
