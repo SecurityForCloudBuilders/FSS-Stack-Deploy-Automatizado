@@ -32,6 +32,9 @@ aws s3api create-bucket --bucket $s3_bucket_to_scan --region us-east-1
 # Getting the FSS External ID
 external_id=$(curl --location --request GET 'https://cloudone.trendmicro.com/api/filestorage/external-id' --header 'api-secret-key: '${api_secret_key}'' --header 'Api-Version: v1' | jq -r '.externalID')
 
+# Sleeps for 20 seconds
+sleep 20
+
 # Deploy the Cloud One - File Storage Security All-in-One Stack:
 
     # --! O retorno ao criar a Stack, irá imprimir na tela o ARN dessa Stack !--
