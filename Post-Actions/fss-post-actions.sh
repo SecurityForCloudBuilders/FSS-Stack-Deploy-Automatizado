@@ -1,23 +1,26 @@
 #!/bin/bash
 
 # To use Github Actions
-allinone_stack_name=$allinone_stackname
-promote_bucket=$promote_bucket
-quarantine_bucket=$quarantine_bucket
-function_name=$function_name
+# allinone_stack_name=$allinone_stackname
+# promote_bucket=$promote_bucket
+# quarantine_bucket=$quarantine_bucket
+# function_name=$function_name
 
 # To use locally. Change with the name of your all-in-one-stack previously deployed
-# allinone_stack_name="your-all-in-one-stack-name"
-# promote_bucket="your-promote-bucket"
-# quarantine_bucket="your-quarantine_bucket"
-# function_name="your-function_name"
+allinone_stack_name="via-git-deploy-this-stack"
+promote_bucket="demolab-fss-promote"
+quarantine_bucket="demolab-fss-quarantine"
+function_name="Lambda-Quare-Or-Promo"
 
 
 # Creating the Promote Bucket
 aws s3api create-bucket --bucket $promote_bucket --region us-east-1
 
-# Creating the Quarantine Bucket
+# # Creating the Quarantine Bucket
 aws s3api create-bucket --bucket $quarantine_bucket --region us-east-1
+
+# Sleep for 30 seconds
+sleep 30
 
 fss_lambda_policy_arn=$(aws iam create-policy --policy-name FSS_Lambda_Policy --policy-document file://fss-trust-policy.json | jq -r .'Policy.Arn')
 
@@ -37,7 +40,7 @@ zip ./promote-or-quarantine.zip handler.py
 
 # For some reason that i don't know why, you have to sleep for at least 5 to 6 seconds before creating the function. 
 # Otherwise will give an error: "An error occurred (InvalidParameterValueException) when calling the CreateFunction operation: The role defined for the function cannot be assumed by Lambda."
-sleep 15
+sleep 20
 
 aws lambda create-function --function-name $function_name --role $fss_lambda_role_arn --runtime python3.8 --timeout 30 --memory-size 512 --handler handler.lambda_handler --zip-file fileb://./promote-or-quarantine.zip --environment Variables=\{PROMOTEBUCKET=$promote_bucket,QUARANTINEBUCKET=$quarantine_bucket\}
 
