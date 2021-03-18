@@ -2,22 +2,25 @@
 
 # To use Github Actions
 allinone_stack_name=$allinone_stackname
-promote_bucket=$promote_bucket
-quarantine_bucket=$quarantine_bucket
 function_name=$function_name
+my_promote_bucket=$mypromote_bucket
+my_quarantine_bucket=$myquarantine_bucket
+my_scan_bucket=$myscan_bucket
 
 # To use locally. Change with the name of your all-in-one-stack previously deployed
 # allinone_stack_name="your-all-in-one-stack-name"
 # promote_bucket="your-promote-bucket"
-# quarantine_bucket="your-quarantine_bucket"
+# quarantine_bucket="your-quarantine-bucket"
 # function_name="your-function_name"
 
-
 # Creating the Promote Bucket
-aws s3api create-bucket --bucket $promote_bucket --region us-east-1
+aws s3api create-bucket --bucket $my_promote_bucket --region us-east-1
 
 # Creating the Quarantine Bucket
-aws s3api create-bucket --bucket $quarantine_bucket --region us-east-1
+aws s3api create-bucket --bucket $my_quarantine_bucket --region us-east-1
+
+# Calling parsing.py to change the values of the fss-trust-policy.json to our values
+python3.6 parsing.py
 
 # Sleeps for 30 seconds
 sleep 30
