@@ -14,9 +14,9 @@ tmp[0]["Resource"] = my_bucket
 
 tmp2 = data["Statement"]
 
-my_promote_bucket = os.environ['my_promote_bucket_arn']
+my_promote_bucket = os.environ['bucket_to_promote_arn']
 
-my_quarantine_bucket = os.environ['my_quarantine_bucket_arn']
+my_quarantine_bucket = os.environ['bucket_to_quarantine_arn']
 
 tmp2[1]["Resource"][0] = my_promote_bucket
 
