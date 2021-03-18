@@ -5,7 +5,7 @@ allinone_stack_name=$allinone_stackname
 function_name=$function_name
 my_promote_bucket=$mypromote_bucket
 my_quarantine_bucket=$myquarantine_bucket
-my_scan_bucket=$myscan_bucket
+my_scan_bucket=$s3bucket_to_scan
 
 # To use locally. Change with the name of your all-in-one-stack previously deployed
 # allinone_stack_name="your-all-in-one-stack-name"
