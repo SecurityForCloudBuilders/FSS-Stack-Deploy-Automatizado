@@ -25,7 +25,7 @@ aws s3api create-bucket --bucket $bucket_to_promote_name --region us-east-1
 aws s3api create-bucket --bucket $bucket_to_quarantine_name --region us-east-1
 
 # Calling parsing.py to change the values of the fss-trust-policy.json to our values
-python3.6 parsing.py
+python parsing.py
 
 # Sleeps for 16 seconds
 # sleep 16

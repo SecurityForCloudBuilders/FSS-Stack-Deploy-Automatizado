@@ -28,6 +28,11 @@ jobs:
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
           aws-region: us-east-1
 
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
       # Runs a single command using the runners shell
       - name: Run The fss-post-actions.sh script and Deploy the File Storage Security Post Action Capability
         working-directory: ./Post-Actions
