@@ -48,7 +48,6 @@ Caso quiera utilizar o <b> "Post-Action-Automated-Deploy" </b>, crie as seguinte
     <ul> <li> Será o bucket que receberá os arquivos que o FSS julga que devem ser quarentenados. <b> *Se um bucket com esse nome não existir, ele irá ser criado. * </b> </li> </ul> 
 <li> function_name </li>
     <ul> <li> Nome da Lambda function que será criada. </li> </ul> 
-
 <li> s3bucket_to_scan </li> 
     <ul> <li> O nome do seu Bucket que será escaneado. <b> *Já precisa existir/ ter sido criado pelo o Deployment Stack do FSS.* </b> </ul> </li>
 

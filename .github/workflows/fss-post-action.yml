@@ -36,4 +36,5 @@ jobs:
           allinone_stackname: ${{ secrets.allinone_stackname }}
           promote_bucket: ${{ secrets.promote_bucket }}
           quarantine_bucket: ${{ secrets.quarantine_bucket }}
-          function_name: ${{ secrets.function_name}}
+          function_name: ${{ secrets.function_name }}
+          s3bucket_to_scan: ${{secrets.s3bucket_to_scan }}
