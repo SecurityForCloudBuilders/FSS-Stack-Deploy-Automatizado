@@ -34,7 +34,9 @@ jobs:
         run: ./fss-post-actions.sh
         env:
           allinone_stackname: ${{ secrets.allinone_stackname }}
-          promote_bucket: ${{ secrets.promote_bucket }}
-          quarantine_bucket: ${{ secrets.quarantine_bucket }}
+          bucket_to_promote_name: ${{ secrets.bucket_to_promote_name}}
+          bucket_to_quarantine_name: ${{ secrets.bucket_to_quarantine_name }}
           function_name: ${{ secrets.function_name }}
-          s3bucket_to_scan: ${{secrets.s3bucket_to_scan }}
+          bucket_to_scan_arn: ${{ secrets.bucket_to_scan_arn }}
+          bucket_to_promote_arn: ${{ secrets.bucket_to_promote_arn }}
+          bucket_to_quarantine_arn: ${{ secrets.bucket_to_quarantine_arn }}

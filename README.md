@@ -42,14 +42,21 @@ Caso quiera utilizar o <b> "Post-Action-Automated-Deploy" </b>, crie as seguinte
 
 <li> allinone_stackname </li>
     <ul> <li> O nome do Deploy da sua All In One Stack do FSS. </li> </ul>
-<li> promote_bucket </li>
-    <ul> <li> Será o bucket que receberá os arquivos considerados pelo FSS como limpos. <b> *Se um bucket com esse nome não existir, ele irá ser criado. * </b> </li> </ul> 
-<li> quarantine_bucket </li>
-    <ul> <li> Será o bucket que receberá os arquivos que o FSS julga que devem ser quarentenados. <b> *Se um bucket com esse nome não existir, ele irá ser criado. * </b> </li> </ul> 
+<li> bucket_to_promote_name </li>
+    <ul> <li> Será o nome do bucket que receberá os arquivos considerados pelo FSS como limpos. <b> *Se um bucket com esse nome não existir, ele irá ser criado. * </b> </li> </ul> 
+<li> bucket_to_quarantine_name </li>
+    <ul> <li> Será o nome do bucket que receberá os arquivos que o FSS julga que devem ser quarentenados. <b> *Se um bucket com esse nome não existir, ele irá ser criado. * </b> </li> </ul> 
 <li> function_name </li>
     <ul> <li> Nome da Lambda function que será criada. </li> </ul> 
-<li> s3bucket_to_scan </li> 
+<li> bucket_to_scan_arn </li> 
     <ul> <li> O nome do seu Bucket que será escaneado. <b> *Já precisa existir/ ter sido criado pelo o Deployment Stack do FSS.* </b> </ul> </li>
+    <ul> <li> <strong> ! IMPORTANTE: ! Essa variável deve seguir o seguinte formato: arn:aws:s3:::YOUR_BUCKET_TO_SCAN_NAME_HERE/* </strong> </ul> </li>
+<li> bucket_to_promote_arn </li>
+    <ul> <li> O nome do seu Bucket-To-Promote. </ul> </li>
+    <ul> <li> <strong>  ! IMPORTANTE: ! Essa variável deve seguir o seguinte formato: arn:aws:s3:::YOUR_QUARANTINE_BUCKET_NAME_HERE/* </strong> </ul> </li>
+<li> bucket_to_quarantine_arn </li>
+    <ul> <li> O nome do seu Bucket-To-Quarantine. </ul> </li>
+    <ul> <li> <strong> ! IMPORTANTE: ! Essa variável deve seguir o seguinte formato: arn:aws:s3:::YOUR_PROMOTE_BUCKET_NAME_HERE/* </strong> </ul> </li> 
 
 </ul>
 
