@@ -32,8 +32,9 @@ jobs:
       - name: Run The fss-stack-deploy.sh script and Deploy the stack to your AWS Account
         run: ./fss-stack-deploy.sh
         env:
-          externalid: ${{ secrets.externalid }}
           allinone_stackname: ${{ secrets.allinone_stackname }}
           region: ${{ secrets.region }}
           s3bucket_to_scan: ${{ secrets.s3bucket_to_scan }}
           c1_api_key: ${{ secrets.c1_api_key }}
+          kmsmaster_key_arn_for_sqs: ${{secrets.kmsmaster_key_arn_for_sqs}}
+          kmsmaster_key_arn: ${{secrets.kmsmaster_key_arn}}

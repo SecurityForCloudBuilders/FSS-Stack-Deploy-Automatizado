@@ -2,25 +2,33 @@
 
 # To use Github Actions
 allinone_stack_name=$allinone_stackname
-promote_bucket=$promote_bucket
-quarantine_bucket=$quarantine_bucket
 function_name=$function_name
+bucket_to_promote_name=$bucket_to_promote_name
+bucket_to_quarantine_name=$bucket_to_quarantine_name
+bucket_to_scan_arn=$bucket_to_scan_arn
+bucket_to_promote_arn=$bucket_to_promote_arn
+bucket_to_quarantine_arn=$bucket_to_quarantine_arn
 
 # To use locally. Change with the name of your all-in-one-stack previously deployed
-# allinone_stack_name="your-all-in-one-stack-name"
-# promote_bucket="your-promote-bucket"
-# quarantine_bucket="your-quarantine_bucket"
-# function_name="your-function_name"
-
+# allinone_stack_name="the-name-of-your-all-in-one-stack"
+# my_promote_bucket_arn="the-arn-of-your-bucket-to-scan" # It must follow this format:  arn:aws:s3:::<YOUR_BUCKET_TO_SCAN>/*
+# my_quarantine_bucket_arn="the-arn-of-your-quarantine-bucket" # It must follow this format: arn:aws:s3:::<YOUR_QUARANTINE_BUCKET>/*
+# bucket_to_scan_arn="the-arn-of-your-promote-bucket" # It must follow this format:  arn:aws:s3:::<YOUR_PROMOTE_BUCKET>/*
+# function_name="the-name-of-your-lambda-function"
+# bucket_to_promote_name="the-name-of-your-promote-bucket"
+# bucket_to_quarantine_name="the-name-of-your-quarantine-bucket"
 
 # Creating the Promote Bucket
-aws s3api create-bucket --bucket $promote_bucket --region us-east-1
+aws s3api create-bucket --bucket $bucket_to_promote_name --region us-east-1
 
 # Creating the Quarantine Bucket
-aws s3api create-bucket --bucket $quarantine_bucket --region us-east-1
+aws s3api create-bucket --bucket $bucket_to_quarantine_name --region us-east-1
 
-# Sleeps for 30 seconds
-sleep 30
+# Calling parsing.py to change the values of the fss-trust-policy.json to our values
+python parsing.py
+
+# Sleeps for 16 seconds
+# sleep 16
 
 fss_lambda_policy_arn=$(aws iam create-policy --policy-name FSS_Lambda_Policy --policy-document file://fss-trust-policy.json | jq -r .'Policy.Arn')
 
@@ -42,7 +50,7 @@ zip ./promote-or-quarantine.zip handler.py
 # Otherwise will give an error: "An error occurred (InvalidParameterValueException) when calling the CreateFunction operation: The role defined for the function cannot be assumed by Lambda."
 sleep 15
 
-aws lambda create-function --function-name $function_name --role $fss_lambda_role_arn --runtime python3.8 --timeout 30 --memory-size 512 --handler handler.lambda_handler --zip-file fileb://./promote-or-quarantine.zip --environment Variables=\{PROMOTEBUCKET=$promote_bucket,QUARANTINEBUCKET=$quarantine_bucket\}
+aws lambda create-function --function-name $function_name --role $fss_lambda_role_arn --runtime python3.8 --timeout 30 --memory-size 512 --handler handler.lambda_handler --zip-file fileb://./promote-or-quarantine.zip --environment Variables=\{PROMOTEBUCKET=$bucket_to_promote_name,QUARANTINEBUCKET=$bucket_to_quarantine_name\}
 
 scan_result_topic_arn=$(aws cloudformation describe-stacks --stack-name $allinone_stack_name | jq -r .'Stacks[0].Outputs[4].OutputValue')
 

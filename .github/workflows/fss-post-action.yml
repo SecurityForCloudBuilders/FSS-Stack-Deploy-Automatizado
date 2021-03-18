@@ -28,12 +28,20 @@ jobs:
           aws-secret-access-key: ${{ secrets.aws_secret_access_key }}
           aws-region: us-east-1
 
+      - name: Setup Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
       # Runs a single command using the runners shell
       - name: Run The fss-post-actions.sh script and Deploy the File Storage Security Post Action Capability
         working-directory: ./Post-Actions
         run: ./fss-post-actions.sh
         env:
           allinone_stackname: ${{ secrets.allinone_stackname }}
-          promote_bucket: ${{ secrets.promote_bucket }}
-          quarantine_bucket: ${{ secrets.quarantine_bucket }}
-          function_name: ${{ secrets.function_name}}
+          bucket_to_promote_name: ${{ secrets.bucket_to_promote_name}}
+          bucket_to_quarantine_name: ${{ secrets.bucket_to_quarantine_name }}
+          function_name: ${{ secrets.function_name }}
+          bucket_to_scan_arn: ${{ secrets.bucket_to_scan_arn }}
+          bucket_to_promote_arn: ${{ secrets.bucket_to_promote_arn }}
+          bucket_to_quarantine_arn: ${{ secrets.bucket_to_quarantine_arn }}
