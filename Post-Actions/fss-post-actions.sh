@@ -87,7 +87,9 @@ sleep 15
 
 create_fuction=$(aws lambda create-function --function-name $function_name --role $fss_lambda_role_arn --runtime python3.8 --timeout 30 --memory-size 512 --handler handler.lambda_handler --zip-file fileb://./promote-or-quarantine.zip --environment Variables=\{PROMOTEBUCKET=$bucket_to_promote_name,QUARANTINEBUCKET=$bucket_to_quarantine_name\})
 
-if [[ "$create_fuction" != 0 ]]
+create_fuction_result=$(echo $?)
+
+if [[ "$create_fuction_result" != 0 ]]
 
 then 
 
