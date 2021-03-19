@@ -27,16 +27,51 @@ aws s3api create-bucket --bucket $bucket_to_quarantine_name --region us-east-1
 # Calling parsing.py to change the values of the fss-trust-policy.json to our values
 python parsing.py
 
-# Sleeps for 16 seconds
-# sleep 16
+# -------====================------------------====================================================
 
-fss_lambda_policy_arn=$(aws iam create-policy --policy-name FSS_Lambda_Policy --policy-document file://fss-trust-policy.json | jq -r .'Policy.Arn')
+fss_lambda_policy_arn=$(aws iam create-policy --policy-name FSS_Lambda_Policy --policy-document file://fss-trust-policy.json)
+
+fss_lambda_policy_arn_result=$(echo $?)
+
+    if [[ "$fss_lambda_policy_arn_result" != 0 ]]
+
+    then
+
+        echo "Não foi possível criar a politica: FSS_Lambda_Policy"
+
+        exit 1
+
+    fi
+
+fss_lambda_policy_arn=$(echo $fss_lambda_policy_arn | jq -r .'Policy.Arn')
 
 # echo $fss_lambda_policy_arn
 
-fss_lambda_role_arn=$(aws iam create-role --role-name FSS_Lambda_Role --assume-role-policy-document file://trust.json | jq -r .'Role.Arn')
+# echo $fss_lambda_policy_arn_result
+
+# -------====================------------------====================================================
+
+fss_lambda_role_arn=$(aws iam create-role --role-name FSS_Lambda_Role --assume-role-policy-document file://trust.json)
+
+fss_lambda_role_arn_result=$(echo $?)
+
+if [[ "$fss_lambda_role_arn_result" != 0 ]]
+
+then
+
+    echo "Não foi possível criar a role: FSS_Lambda_Role"
+
+    exit 1
+
+fi
+
+fss_lambda_role_arn=$(echo $fss_lambda_role_arn | jq -r .'Role.Arn')
 
 # echo $fss_lambda_role_arn
+
+# echo $fss_lambda_role_arn_result
+
+# -------====================------------------====================================================
 
 aws iam attach-role-policy --role-name FSS_Lambda_Role --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
 
@@ -50,7 +85,19 @@ zip ./promote-or-quarantine.zip handler.py
 # Otherwise will give an error: "An error occurred (InvalidParameterValueException) when calling the CreateFunction operation: The role defined for the function cannot be assumed by Lambda."
 sleep 15
 
-aws lambda create-function --function-name $function_name --role $fss_lambda_role_arn --runtime python3.8 --timeout 30 --memory-size 512 --handler handler.lambda_handler --zip-file fileb://./promote-or-quarantine.zip --environment Variables=\{PROMOTEBUCKET=$bucket_to_promote_name,QUARANTINEBUCKET=$bucket_to_quarantine_name\}
+create_fuction=$(aws lambda create-function --function-name $function_name --role $fss_lambda_role_arn --runtime python3.8 --timeout 30 --memory-size 512 --handler handler.lambda_handler --zip-file fileb://./promote-or-quarantine.zip --environment Variables=\{PROMOTEBUCKET=$bucket_to_promote_name,QUARANTINEBUCKET=$bucket_to_quarantine_name\})
+
+if [[ "$create_fuction" != 0 ]]
+
+then 
+
+    echo "Não foi possível criar a Lambda Function: $function_name"
+
+    exit 1
+
+fi
+
+# -------====================------------------====================================================
 
 scan_result_topic_arn=$(aws cloudformation describe-stacks --stack-name $allinone_stack_name | jq -r .'Stacks[0].Outputs[4].OutputValue')
 
