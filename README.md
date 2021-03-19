@@ -68,7 +68,7 @@ Também é necessário manualmente abrir o arquivo <b> fss-automated-deploy.yml 
 
 <b> E finalmente, vá até a parte de Actions no Seu Repositório. Embaixo de "All Workflows" procure e clique em "FSS-Automated-Deploy". Por último, clique em "Run workflow". 
 
-Pronto, o Workflow, irá começar automaticamente!</b>
+Pronto, o Workflow irá começar automaticamente!</b>
 
 <br />
 <hr />

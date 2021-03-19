@@ -29,7 +29,7 @@ python parsing.py
 
 # -------====================------------------====================================================
 
-fss_lambda_policy_arn=$(aws iam create-policy --policy-name FSS_Lambda_Policy --policy-document file://fss-trust-policy.json)
+fss_lambda_policy_arn=$(aws iam create-policy --policy-name FSS_Teste_Policy_Um --policy-document file://fss-trust-policy.json)
 
 fss_lambda_policy_arn_result=$(echo $?)
 
@@ -51,7 +51,7 @@ fss_lambda_policy_arn=$(echo $fss_lambda_policy_arn | jq -r .'Policy.Arn')
 
 # -------====================------------------====================================================
 
-fss_lambda_role_arn=$(aws iam create-role --role-name FSS_Lambda_Role --assume-role-policy-document file://trust.json)
+fss_lambda_role_arn=$(aws iam create-role --role-name FSS_Teste_Role_Um --assume-role-policy-document file://trust.json)
 
 fss_lambda_role_arn_result=$(echo $?)
 
