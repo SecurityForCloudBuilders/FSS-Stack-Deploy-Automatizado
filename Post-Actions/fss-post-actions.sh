@@ -101,7 +101,7 @@ fi
 
 # -------====================------------------====================================================
 
-scan_result_topic_arn=$(aws cloudformation describe-stacks --stack-name $allinone_stack_name | jq -r .'Stacks[0].Outputs[4].OutputValue')
+scan_result_topic_arn=$(aws cloudformation describe-stacks --stack-name $allinone_stack_name | jq -r .'Stacks[0].Outputs[5].OutputValue')
 
 lambda_arn=$(aws lambda get-function --function-name $function_name | jq -r .'Configuration.FunctionArn')
 
